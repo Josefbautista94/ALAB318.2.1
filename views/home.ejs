@@ -10,12 +10,21 @@
 
 <body>
     <h1> Welcome To The Home Page</h1>
-    <a href="/about">Go To About Page</a>
+    <form action="submit" method="POST"> <!-- action="submit" — When the form is submitted, 
+    it sends the data to the /submit route (handled by the POST route in index.js). -->
 
-    <form action="submit" method="POST">
-        <label for="name">Name: </label>
-        <input type="text" name="name" id="name" required>
+        <label for="name">Name: </label> <!-- Provides a label for the input field. -->
+        <!-- for="name" — Connects the label to the input field with the id="name" (helps with accessibility, 
+        screen readers, and clicking the label to focus the input). -->
+
+        <input type="text" name="name" id="name" required> <!-- field where the user submits there name -->
+        <!-- name="name" — This is critical: it's the key that shows up in req.body on the backend.
+        Example: If someone types "Jose", the backend gets { name: "Jose" } -->
+
         <button type="submit">Send</button>
+        <a href="/about">Go To About Page</a>
+        <!-- href="/about" — Clicking it sends the user to the /about route (which renders about.ejs). -->
+
     </form>
 </body>
 
