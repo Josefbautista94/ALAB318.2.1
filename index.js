@@ -1,36 +1,55 @@
 const express = require("express"); // loading express module 
-const app = express(); // creating an instance express
-const port = 3000; // server on port 3000
+const app = express(); // creating an instance of the Express app
+const port = 3000; // setting the server to run on port 3000
 
-app.use(express.urlencoded({ extended: true })); // middleware that parses URL-encoded form data
-// cannot form data from POST requests without it, req.body would be undefinded 
+app.use(express.urlencoded({ extended: true }));
+// middleware that parses URL-encoded form data from POST requests
+// without this, req.body would be undefined
 
-app.set('view engine', 'ejs'); // telling express to use EJS as the templating engine when rendering views
-// when im calling res.render(), it looks for .ejs files in the views/ folder and fills in dynamic content
+// creating my own middleware for practice (Logger)
+app.use((req, res, next) => {
+    // app.use registers the middleware — it runs on every request to the server
+    // req = incoming request, res = outgoing response, next = tells Express to move to the next step
 
-app.listen(port, () => { // starts the server and listens for request on localhost:3000
+    const time = new Date().toLocaleString(); // creates a human-readable timestamp
+    const method = req.method; // stores the HTTP method (GET, POST, etc.)
+    const url = req.url; // gets the request path, like /user/Jose
 
-    console.log(`Jose listening on : ${port}`)
+    console.log(`[${time}] ${method} ${url}`);
+    // logs something like: [4/5/2025, 2:17:41 AM] POST /submit
 
-})
-
-app.get('/', (req, res) => { // get route for the homepage 
-    res.render('home'); // when you visit /, it renders views/home.ejs
+    next(); // moves to the next middleware or route
 });
 
-app.get('/about', (req, res) => { // get route for the about page
-    res.render('about'); // when you visit /about it renders the views/home.ejs
+app.set('view engine', 'ejs');
+// sets EJS as the templating engine
+// when calling res.render(), Express looks for .ejs files in the views/ folder and injects dynamic data
+
+app.listen(port, () => {
+    // starts the server and listens for requests on localhost:3000
+    console.log(`Jose listening on : ${port}`);
 });
 
-app.get('/user/:name', (req, res) => { // when visiting /user/Jose, req.params.name becomes 'Jose', and its passed into user.ejs as {name: 'Jose'}
-    const userName = req.params.name; // req.params is an object that holds all the values from the : parameters in the URL.
-    //So if they went to /user/Jose, req.params.name will be 'Jose'
-    res.render('user', { name: userName }); //The : means "this part is dynamic."
-
+app.get('/', (req, res) => {
+    // GET route for the homepage 
+    res.render('home'); // renders views/home.ejs
 });
 
-app.post('/submit', (req, res) => { // POST route that recieves the form data
+app.get('/about', (req, res) => {
+    // GET route for the about page
+    res.render('about'); // renders views/about.ejs
+});
+
+app.get('/user/:name', (req, res) => {
+    // Dynamic route with a URL parameter
+    // Visiting /user/Jose sets req.params.name to 'Jose'
+    const userName = req.params.name;
+    res.render('user', { name: userName });
+    // Renders views/user.ejs and passes in { name: 'Jose' }
+});
+
+app.post('/submit', (req, res) => {
+    // POST route that receives form data
     console.log(req.body);   // Logs { name: 'whatever you typed' }
-    res.send('Success! Form received.'); // responds with a success message
+    res.send('Success! Form received.'); // Sends confirmation message
 });
-
