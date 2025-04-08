@@ -46,7 +46,7 @@ app.get('/user/:name', (req, res) => {
     // Dynamic route with a URL parameter
     // Visiting /user/Jose sets req.params.name to 'Jose'
     const userName = req.params.name;
-    res.render('user', { name: userName });
+    res.render('home', { name: userName });
     // Renders views/user.ejs and passes in { name: 'Jose' }
 });
 
@@ -66,11 +66,19 @@ app.get("/download", (req, res) => {
   });
 
 
-  
+
   
 
+// app.post('/submit', (req, res) => {
+//     // POST route that receives form data
+//     console.log(req.body);   // Logs { name: 'whatever you typed' }
+//     res.send('Success! Form received.'); // Sends confirmation message
+// });
+
 app.post('/submit', (req, res) => {
-    // POST route that receives form data
-    console.log(req.body);   // Logs { name: 'whatever you typed' }
-    res.send('Success! Form received.'); // Sends confirmation message
-});
+    const name = req.body.name;
+    if (!name || name.trim() === '') {
+      return res.redirect('/');
+    }
+    res.redirect(`/user/${name}`);
+  });
