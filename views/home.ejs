@@ -6,9 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
+    <link rel="stylesheet" href="/styles.css">
 </head>
 
+
 <body>
+ <nav class="navbar">
+        <ul class="navbar-menu">
+            <!-- <li class="logo-wrapper">
+                <img src="/Megaman_retro_3D_by_cezkid.webp" class="siteLogo" alt="Megaman Logo">
+
+</li> -->
+            <li><a href="/">Home</a></li>
+            <li>  <a href="/about">About</a></li>
+
+            <li class="dropdown">
+                <a>Stuff Here</a>
+                <ul class="dropdown-menu">
+                    <li><a></a></li>
+                    <li><a></a></li>
+                    <li><a></a></li>
+                    <li><a></a></li>
+                </ul>
+            </li>
+            <li><a>Pups</a></li>
+        </ul>
+    </nav>
     <h1> Welcome To The Home Page</h1>
     <form action="submit" method="POST"> <!-- action="submit" — When the form is submitted, 
     it sends the data to the /submit route (handled by the POST route in index.js). -->
@@ -22,11 +45,10 @@
         Example: If someone types "Jose", the backend gets { name: "Jose" } -->
 
         <button type="submit">Send</button>
-        <a href="/about">Go To About Page</a>
         <!-- href="/about" — Clicking it sends the user to the /about route (which renders about.ejs). -->
     </form>
-    <img src ="../Megaman_retro_3D_by_cezkid.webp" alt = "MegaMan" width = "300">
-    <a href ="/download"><button>Download Spinning Megaman</button></a>
+    <img src="/Megaman_retro_3D_by_cezkid.webp" alt="MegaMan" width="300">
+    <a href="/download"><button>Download Spinning Megaman</button></a>
 </body>
 
 </html>

@@ -64,6 +64,9 @@ app.get("/download", (req, res) => {
     // '8bitMegaMan.webp' is the name the file will be saved as when downloaded,
     // instead of using the original filename.
   });
+
+
+  
   
 
 app.post('/submit', (req, res) => {
