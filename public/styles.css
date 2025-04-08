@@ -1,0 +1,119 @@
+body {
+    background-color: rgb(6, 87, 227);
+    height : 95vh;
+
+}
+
+/* Navbar styles */
+
+/* Navbar styles */
+.navbar {
+    background-color: rgb(213, 142, 0);
+    padding: 0.3rem 1rem;
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 100;
+    border-bottom: 0.1em solid rgb(34, 34, 39);
+    min-height: 60px; /* Flexible height */
+
+    
+}
+html {
+    scroll-behavior: smooth;
+  }
+
+
+.navbar-menu {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.navbar-menu li {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 50px;
+    position: relative;
+    /* bruh */
+    border-right: 0.2em solid rgb(34, 34, 39);
+    padding-right: 2em;
+}
+
+/* Did this to make it look cleaner 🥴 */
+.navbar-menu li:last-child {
+    border-right: none;
+    /* Remove right border on last item */
+
+}
+
+.navbar-menu li:first-child {
+    border-right: none;
+    /* Remove right border on the first item */
+
+}
+
+.navbar-menu li a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 24px;
+    font-family: 'Bungee', sans-serif;
+    transition: color 0.3s ease;
+}
+
+.navbar-menu li a:hover {
+    color: rgb(6, 87, 227);
+    /* cool color? */
+}
+
+/* Logo styling */
+.barLogo {
+    height: 4em;
+    width: 4em;
+    border-radius: 70%;
+    object-fit: cover;
+}
+
+/* Dropdown menu */
+.dropdown-menu {
+    display: none;
+    position: absolute;
+    top: 100%;
+    /* Positions dropdown below the parent link */
+    left: 0;
+    background-color: rgb(34, 34, 39);
+    padding: 10px 0;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+    min-width: 180px;
+    z-index: 1000;
+}
+
+.dropdown-menu li {
+    border: none;
+    /* might create a border later on idk */
+    padding-left: 4em;
+}
+
+.dropdown-menu li a {
+    display: block;
+    padding: 10px 20px;
+    font-size: 16px;
+    color: #f0f0f0;
+}
+
+.dropdown-menu li a:hover {
+    background-color:rgb(6, 87, 227);
+
+    color: #1a1a1a;
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
