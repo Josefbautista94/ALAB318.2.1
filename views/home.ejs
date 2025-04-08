@@ -7,8 +7,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home Page</title>
     <link rel="stylesheet" href="/styles.css">
-</head>
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
 
+
+</head>
 
 <body>
  <nav class="navbar">
@@ -17,6 +19,9 @@
                 <img src="/Megaman_retro_3D_by_cezkid.webp" class="siteLogo" alt="Megaman Logo">
 
 </li> -->
+<% if (typeof name !== 'undefined') { %>
+    <li class="nav-greeting">Hey, <%= name %>!</li>
+  <% } %>
             <li><a href="/">Home</a></li>
             <li>  <a href="/about">About</a></li>
 
@@ -32,8 +37,10 @@
             <li><a>Pups</a></li>
         </ul>
     </nav>
+    <div class = "homepageDiv">
     <h1> Welcome To The Home Page</h1>
-    <form action="submit" method="POST"> <!-- action="submit" — When the form is submitted, 
+    
+    <form action="/submit" method="POST"> <!-- action="submit" — When the form is submitted, 
     it sends the data to the /submit route (handled by the POST route in index.js). -->
 
         <label for="name">Name: </label> <!-- Provides a label for the input field. -->
@@ -47,8 +54,11 @@
         <button type="submit">Send</button>
         <!-- href="/about" — Clicking it sends the user to the /about route (which renders about.ejs). -->
     </form>
+    <div class = "downloadImgDiv">
     <img src="/Megaman_retro_3D_by_cezkid.webp" alt="MegaMan" width="300">
     <a href="/download"><button>Download Spinning Megaman</button></a>
+</div>
+</div>
 </body>
 
 </html>
